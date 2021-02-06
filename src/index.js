@@ -1,12 +1,57 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+
+//parts
+import Header from './components/Header';
+import TopBack from './components/TopBack';
+import Works from './components/Works';
+import About from './components/About';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+
+//small parts
+import LeadLine from './components/LeadLine';
+
 import reportWebVitals from './reportWebVitals';
+
+//import Router
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Router>
+          <Header />
+
+          <main>
+
+              <TopBack/>
+
+              <LeadLine/>
+              
+              <Switch>
+                  <Route exact path="/">
+                      <Works page="work" title="Works"/>
+                      <Works page="art" title="Arts"/>
+                  </Route>
+
+                  <Route exact path="/about">
+                      <About/>
+                  </Route>
+
+                  <Route exact path="/contact">
+                      <Contact/>
+                  </Route>
+              </Switch>
+          </main>
+
+          <Footer />
+
+
+      </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
